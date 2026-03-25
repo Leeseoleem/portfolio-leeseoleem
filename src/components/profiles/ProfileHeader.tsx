@@ -3,7 +3,7 @@ import { PROFILE } from "@/constants/profile";
 
 export function ProfileHeader() {
   return (
-    <div className="flex gap-5 items-start py-6 bg-bg-card border-b border-border px-5">
+    <div className="flex gap-5 items-start py-6 bg-bg-card  px-5">
       <div className="w-20 h-20 rounded-full shrink-0 overflow-hidden border-2 border-border-med">
         <img
           src={profileImg}
