@@ -30,7 +30,7 @@
 
 import { useState } from "react";
 import SectionContainer from "./SectionContainer";
-import type { ProjectScreenshot } from "../../types/projects";
+import type { ProjectScreenshot } from "@/types/projects";
 
 interface DetailScreenshotsProps {
   screenshots: ProjectScreenshot[];

@@ -1,4 +1,4 @@
-import type { ProjectFilter, ProjectColor, Project } from "../types/projects";
+import type { ProjectFilter, ProjectColor, Project } from "@/types/projects";
 
 export const FILTER_LABEL: { type: ProjectFilter; label: string }[] = [
   { type: "all", label: "전체" },

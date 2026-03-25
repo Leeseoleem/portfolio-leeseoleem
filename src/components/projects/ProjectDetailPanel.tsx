@@ -5,9 +5,9 @@ import { ChevronLeft } from "lucide-react";
 import DetailScreenshots from "./DetailScreenshots";
 import SectionContainer from "./SectionContainer";
 
-import { PROJECTS, PROJECT_COLORS } from "../../constants/projects";
+import { PROJECTS, PROJECT_COLORS } from "@/constants/projects";
 
-import type { Project } from "../../types/projects";
+import type { Project } from "@/types/projects";
 
 interface ProjectDetailPanelProps {
   projectId: string | null;

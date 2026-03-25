@@ -1,13 +1,13 @@
 import { useState, useMemo } from "react";
 // === component ===
-import ProjectFilterTab from "../components/projects/ProjectFilterTab";
-import ProjectCard from "../components/projects/ProjectCard";
-import ProjectDetailPanel from "../components/projects/ProjectDetailPanel";
+import ProjectFilterTab from "@/components/projects/ProjectFilterTab";
+import ProjectCard from "@/components/projects/ProjectCard";
+import ProjectDetailPanel from "@/components/projects/ProjectDetailPanel";
 // === type ===
-import type { ProjectFilter } from "../types/projects";
+import type { ProjectFilter } from "@/types/projects";
 // === etc ===
-import { PROJECTS } from "../constants/projects";
-import { useScroll } from "../contexts/useScroll";
+import { PROJECTS } from "@/constants/projects";
+import { useScroll } from "@/contexts/useScroll";
 
 export default function ProjectsPage() {
   const { scrollToTop, scrollRef } = useScroll();

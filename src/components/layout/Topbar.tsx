@@ -1,6 +1,6 @@
 import { useLocation } from "@tanstack/react-router";
 import clsx from "clsx";
-import { PAGE_TITLES } from "../../constants/navigation";
+import { PAGE_TITLES } from "@/constants/navigation";
 
 export default function Topbar() {
   const { pathname } = useLocation();

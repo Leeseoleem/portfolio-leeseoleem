@@ -2,8 +2,8 @@ import { Link, useLocation } from "@tanstack/react-router";
 import clsx from "clsx";
 import { User, LayoutGrid, FileText, Mail } from "lucide-react";
 
-import { useScroll } from "../../contexts/useScroll";
-import { NAV_ITEMS } from "../../constants/navigation";
+import { useScroll } from "@/contexts/useScroll";
+import { NAV_ITEMS } from "@/constants/navigation";
 
 const ICONS = {
   "/": User,
