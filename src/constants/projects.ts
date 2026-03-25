@@ -6,6 +6,10 @@ export const FILTER_LABEL: { type: ProjectFilter; label: string }[] = [
   { type: "team", label: "팀" },
 ];
 
+export const getLabel = (type: ProjectFilter): string => {
+  return FILTER_LABEL.find((item) => item.type === type)?.label ?? "";
+};
+
 // 포인트 컬러 상수
 export const PROJECT_COLORS: Record<
   ProjectColor,
