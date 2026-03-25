@@ -1,13 +1,10 @@
 import { Outlet } from "@tanstack/react-router";
-import { useScroll } from "../../contexts/useScroll";
 // === component ===
 import Topbar from "./Topbar";
 import Sidebar from "./Sidebar";
 import BottomTabBar from "./BottomTabBar";
 
 export default function RootLayout() {
-  const { scrollRef } = useScroll();
-
   return (
     <div className="flex h-dvh overflow-hidden">
       {/* 사이드바 — 모바일에서 숨김 */}
@@ -15,10 +12,7 @@ export default function RootLayout() {
 
       <div className="flex flex-col flex-1 min-w-0">
         <Topbar />
-        <main
-          ref={scrollRef as React.RefObject<HTMLDivElement>}
-          className="flex-1 overflow-y-auto pb-[60px] md:pb-0"
-        >
+        <main className="flex-1 overflow-y-auto pb-[60px] md:pb-0">
           <Outlet />
         </main>
 

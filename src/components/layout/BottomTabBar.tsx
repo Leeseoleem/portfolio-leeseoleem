@@ -2,6 +2,7 @@ import { Link, useLocation } from "@tanstack/react-router";
 import clsx from "clsx";
 import { User, LayoutGrid, FileText, Mail } from "lucide-react";
 
+import { useScroll } from "../../contexts/useScroll";
 import { NAV_ITEMS } from "../../constants/navigation";
 
 const ICONS = {
@@ -13,6 +14,7 @@ const ICONS = {
 
 export default function BottomTabBar() {
   const { pathname } = useLocation();
+  const { scrollToTop } = useScroll();
 
   return (
     <nav className="md:hidden fixed bottom-0 left-0 right-0 h-[60px] bg-bg-card border-t border-border flex items-center">
@@ -24,6 +26,12 @@ export default function BottomTabBar() {
           <Link
             key={path}
             to={path}
+            onClick={(e) => {
+              if (isActive) {
+                e.preventDefault(); // 페이지 이동 방지 (이미 해당 위치이므로)
+                scrollToTop();
+              }
+            }}
             className={clsx(
               "flex-1 flex flex-col items-center justify-center gap-1 transition-colors duration-200",
               isActive ? "text-accent" : "text-ink3",
