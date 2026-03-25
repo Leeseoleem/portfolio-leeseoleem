@@ -253,42 +253,42 @@
   /* pill · chip · 태그 */
   .text-chip {
     font-size: var(--font-size-p-2xs);
-    font-weight: 400;
+    font-weight: 500;
     line-height: var(--line-height-p-2xs);
   }
 
   /* 날짜, 핸들, 서브텍스트 */
   .text-meta {
     font-size: var(--font-size-p-xs);
-    font-weight: 400;
+    font-weight: 500;
     line-height: var(--line-height-p-xs);
   }
 
   /* 역할, 경력 서브, 상세패널 메타 */
   .text-role {
     font-size: var(--font-size-p-sm);
-    font-weight: 400;
+    font-weight: 500;
     line-height: var(--line-height-p-sm);
   }
 
   /* 본문 — About 소개, quote, skill reason */
   .text-body {
     font-size: var(--font-size-p-body);
-    font-weight: 400;
+    font-weight: 500;
     line-height: var(--line-height-p-body);
   }
 
   /* 피드 본문, 사이드바 레이블 */
   .text-feed {
     font-size: var(--font-size-p-md);
-    font-weight: 400;
+    font-weight: 500;
     line-height: var(--line-height-p-md);
   }
 
   /* 트윗 본문, 경력 조직명 */
   .text-tweet {
     font-size: var(--font-size-p-lg);
-    font-weight: 400;
+    font-weight: 500;
     line-height: var(--line-height-p-lg);
   }
 
