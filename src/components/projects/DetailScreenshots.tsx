@@ -29,10 +29,11 @@
 // ─────────────────────────────────────────────
 
 import { useState } from "react";
+import SectionContainer from "./SectionContainer";
 import type { ProjectScreenshot } from "../../types/projects";
 
 interface DetailScreenshotsProps {
-  screenshots?: ProjectScreenshot[];
+  screenshots: ProjectScreenshot[];
   accentColor: string; // PROJECT_COLORS[color].bg
   lightColor: string; // PROJECT_COLORS[color].light
   title: string;
@@ -58,11 +59,7 @@ export default function DetailScreenshots({
   const hasValidShots = validShots.length > 0;
 
   return (
-    <section className="px-5 py-4 border-b border-border">
-      <p className="text-[10px] font-bold text-ink3 tracking-[.08em] mb-[10px]">
-        SCREENSHOTS
-      </p>
-
+    <SectionContainer label="스크린샷">
       <div className="flex gap-2 overflow-x-auto pb-1">
         {hasValidShots
           ? validShots.map((shot) => (
@@ -84,11 +81,11 @@ export default function DetailScreenshots({
               />
             ))}
       </div>
-    </section>
+    </SectionContainer>
   );
 }
 
-// ─── 개별 스크린샷 아이템 ─────────────────────
+// === 개별 스크린샷 아이템 ===
 interface ScreenshotItemProps {
   shot: ProjectScreenshot;
   lightColor: string;
@@ -125,7 +122,7 @@ function ScreenshotItem({
   );
 }
 
-// ─── 플레이스홀더 ─────────────────────────────
+// === 플레이스홀더 ===
 interface PlaceholderProps {
   lightColor: string;
   accentColor: string;
