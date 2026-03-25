@@ -46,8 +46,8 @@ export interface Project {
   works: WorkItem[];
   screenshots: ProjectScreenshot[];
   links: {
-    notion?: string;
     github?: string;
+    notion?: string;
     live?: string;
   };
   inProgress?: boolean;
