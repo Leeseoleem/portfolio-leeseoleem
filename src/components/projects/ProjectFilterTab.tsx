@@ -1,5 +1,5 @@
-import type { ProjectFilter } from "../../../types/projects";
-import { FILTER_LABEL } from "../../../constants/projects";
+import type { ProjectFilter } from "../../types/projects";
+import { FILTER_LABEL } from "../../constants/projects";
 
 interface ProjectFilterTabProps {
   active: ProjectFilter;

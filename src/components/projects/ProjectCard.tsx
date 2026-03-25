@@ -1,5 +1,5 @@
-import { type Project } from "../../../types/projects";
-import { PROJECT_COLORS, getLabel } from "../../../constants/projects";
+import { type Project } from "../../types/projects";
+import { PROJECT_COLORS, getLabel } from "../../constants/projects";
 
 interface ProjectCardProps {
   project: Project;
