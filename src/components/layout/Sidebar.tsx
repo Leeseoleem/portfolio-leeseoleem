@@ -1,7 +1,7 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import { User, LayoutGrid, FileText, Mail } from "lucide-react";
 import clsx from "clsx";
-import { NAV_ITEMS } from "../../constants/navigation";
+import { NAV_ITEMS } from "@/constants/navigation";
 
 const ICONS = {
   "/": User,
