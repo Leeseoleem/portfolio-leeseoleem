@@ -1,7 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { PROJECTS, PROJECT_COLORS } from "../../constants/projects";
+import { ChevronLeft } from "lucide-react";
+
 import DetailScreenshots from "./DetailScreenshots";
+import SectionContainer from "./SectionContainer";
+
+import { PROJECTS, PROJECT_COLORS } from "../../constants/projects";
+
+import type { Project } from "../../types/projects";
 
 interface ProjectDetailPanelProps {
   projectId: string | null;
@@ -79,7 +85,7 @@ export default function ProjectDetailPanel({
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* ── 백드롭 ── */}
+          {/* === 백드롭 === */}
           <motion.div
             key="backdrop"
             variants={backdropVariants}
@@ -87,12 +93,12 @@ export default function ProjectDetailPanel({
             animate="visible"
             exit="exit"
             transition={BACKDROP_TRANSITION}
-            className="fixed inset-0 z-[200] bg-black/30 backdrop-blur-[2px]"
+            className="fixed inset-0 z-200 bg-black/30 backdrop-blur-[2px]"
             onClick={onClose}
             aria-hidden="true"
           />
 
-          {/* ── 슬라이드 패널 ── */}
+          {/* === 슬라이드 패널 === */}
           <motion.div
             key="panel"
             role="dialog"
@@ -103,204 +109,59 @@ export default function ProjectDetailPanel({
             animate="visible"
             exit="exit"
             transition={TRANSITION}
-            className="fixed top-0 right-0 bottom-0 z-[201] w-[min(540px,100%)] flex flex-col bg-[var(--p-bg-card)] border-l border-[var(--p-border)]"
+            className="fixed top-0 right-0 bottom-0 z-201 w-[min(540px,100%)] flex flex-col bg-bg-card border-l border-border"
           >
             {/* ── 상단 바 ── */}
-            <div className="h-[52px] border-b border-[var(--p-border)] flex items-center px-5 gap-3 flex-shrink-0 bg-[var(--p-bg-card)]">
-              <button
-                onClick={onClose}
-                className="flex items-center gap-1 text-[12px] font-medium text-[var(--p-accent)] hover:opacity-70 transition-opacity"
-                aria-label="닫기"
-              >
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path
-                    d="M9 2L4 7l5 5"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                뒤로
-              </button>
-              <span className="text-[14px] font-bold text-[var(--p-ink)] flex-1 truncate">
-                {project.title}
-              </span>
-            </div>
+            <BackHeader title={project.title} onClose={onClose} />
 
             {/* ── 스크롤 바디 ── */}
             <div
               ref={bodyRef}
-              className="flex-1 overflow-y-auto overflow-x-hidden pb-[68px]"
+              className="flex-1 overflow-y-auto overflow-x-hidden pb-15"
             >
               {/* LinkedIn 스타일 배너 */}
-              <div className="h-[90px] relative flex-shrink-0">
+              <div className="h-[90px] relative shrink-0">
                 <div
                   className="absolute inset-0 opacity-[.18]"
                   style={{ background: colors.bg }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20" />
+                <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-black/20" />
               </div>
 
               {/* 프로필 영역 */}
-              <div className="px-5 pb-[14px] border-b border-[var(--p-border)]">
-                <div
-                  className="w-[52px] h-[52px] rounded-full border-[3px] border-[var(--p-bg-card)] flex items-center justify-center text-[18px] font-bold text-white -mt-7 mb-[10px]"
-                  style={{ background: colors.bg }}
-                >
-                  이
-                </div>
-                <p className="text-[17px] font-bold text-[var(--p-ink)] mb-[3px]">
-                  {project.title}
-                </p>
-                <p className="text-[11.5px] text-[var(--p-ink3)] mb-[10px] leading-[1.5]">
-                  {project.period} · {project.role}
-                </p>
+              <Profile background={colors.bg} project={project} />
 
-                <div className="flex flex-wrap gap-[5px] mb-3">
-                  {project.stack.map((s) => (
-                    <span
-                      key={s}
-                      className="px-[10px] py-[3px] rounded-full text-[10.5px] border border-[var(--p-border-med)] text-[var(--p-ink2)] bg-[var(--p-bg-sub)]"
-                    >
-                      {s}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex flex-wrap gap-[7px]">
-                  {project.links.notion && (
-                    <LinkButton href={project.links.notion}>
-                      Notion ↗
-                    </LinkButton>
-                  )}
-                  {project.links.github && (
-                    <LinkButton href={project.links.github}>
-                      GitHub ↗
-                    </LinkButton>
-                  )}
-                  {project.links.live && (
-                    <LinkButton href={project.links.live} primary>
-                      Live ↗
-                    </LinkButton>
-                  )}
-                </div>
-              </div>
-
-              {/* 트위터 스타일 설명 */}
-              <div className="px-5 py-4 border-b border-[var(--p-border)]">
-                <div className="flex gap-[10px] items-center mb-[10px]">
-                  <div
-                    className="w-[34px] h-[34px] rounded-full flex items-center justify-center text-[12px] font-bold text-white flex-shrink-0"
-                    style={{ background: colors.bg }}
-                  >
-                    이
-                  </div>
-                  <div>
-                    <p className="text-[13px] font-bold text-[var(--p-ink)]">
-                      이서림
-                    </p>
-                    <p className="text-[11px] text-[var(--p-ink3)]">
-                      @seorim · Frontend Developer
-                    </p>
-                  </div>
-                </div>
-                <p className="text-[13.5px] text-[var(--p-ink)] leading-[1.75] mb-3 break-keep">
-                  {project.summary}
-                </p>
-                <div className="flex flex-wrap gap-[5px]">
-                  {project.stack.map((s) => (
-                    <span
-                      key={s}
-                      className="text-[12px] font-medium"
-                      style={{ color: colors.bg }}
-                    >
-                      #{s.replace(/[.\s/]/g, "")}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* 스크린샷 */}
-              <DetailScreenshots
-                screenshots={project.screenshots}
-                accentColor={colors.bg}
-                lightColor={colors.light}
-                title={project.title}
+              {/* 프로젝트 설명 */}
+              <Info
+                background={colors.bg}
+                summary={project.summary}
+                stack={project.stack}
               />
 
+              {/* 스크린샷 */}
+              {project.screenshots.length > 0 && (
+                <DetailScreenshots
+                  screenshots={project.screenshots}
+                  accentColor={colors.bg}
+                  lightColor={colors.light}
+                  title={project.title}
+                />
+              )}
+
               {/* 주요 작업 */}
-              <section className="px-5 py-4 border-b border-[var(--p-border)]">
-                <p className="text-[10px] font-bold text-[var(--p-ink3)] tracking-[.08em] mb-3">
-                  주요 작업
-                </p>
-                <div className="flex flex-col gap-4">
-                  {project.works.map((w) => (
-                    <div key={w.num} className="flex gap-3">
-                      <div
-                        className="w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold text-white flex-shrink-0 mt-0.5"
-                        style={{ background: colors.bg }}
-                      >
-                        {w.num}
-                      </div>
-                      <div className="flex-1">
-                        <p className="text-[13px] font-bold text-[var(--p-ink)] mb-[5px]">
-                          {w.summary}
-                        </p>
-                        <p className="text-[12px] text-[var(--p-ink2)] leading-[1.8]">
-                          {w.detail}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
+              <TaskSection background={colors.bg} project={project} />
 
               {/* 기술 선택 이유 탭 */}
-              <section className="px-5 py-4">
-                <p className="text-[10px] font-bold text-[var(--p-ink3)] tracking-[.08em] mb-3">
-                  기술 선택 이유
-                </p>
-                <div className="flex flex-wrap gap-[5px] mb-3">
-                  {project.skills.map((sk, i) => (
-                    <button
-                      key={sk.name}
-                      onClick={() => setActiveSkillIdx(i)}
-                      className={[
-                        "px-[13px] py-[5px] rounded-full text-[11px] border transition-all duration-[220ms]",
-                        activeSkillIdx === i
-                          ? "text-white border-transparent"
-                          : "text-[var(--p-ink2)] border-[var(--p-border-med)] bg-transparent hover:bg-[var(--p-bg-sub)]",
-                      ].join(" ")}
-                      style={
-                        activeSkillIdx === i
-                          ? { background: colors.bg, borderColor: colors.bg }
-                          : {}
-                      }
-                    >
-                      {sk.name}
-                    </button>
-                  ))}
-                </div>
-
-                {/* 탭 내용 — 탭 전환 시 fade + 살짝 올라오는 효과 */}
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeSkillIdx}
-                    initial={{ opacity: 0, y: 4 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -4 }}
-                    transition={{ duration: 0.15, ease: "easeOut" }}
-                    className="bg-[var(--p-bg-sub)] rounded-[8px] px-[15px] py-[13px] text-[12.5px] text-[var(--p-ink2)] leading-[1.75] min-h-[64px]"
-                  >
-                    {project.skills[activeSkillIdx]?.reason}
-                  </motion.div>
-                </AnimatePresence>
-              </section>
+              <TechSection
+                project={project}
+                background={colors.bg}
+                activeSkillIdx={activeSkillIdx}
+                setActiveSkillIdx={setActiveSkillIdx}
+              />
             </div>
 
             {/* ── 하단 링크바 (고정) ── */}
-            <div className="absolute bottom-0 left-0 right-0 h-[60px] bg-[var(--p-bg-card)] border-t border-[var(--p-border)] flex items-center px-[18px] gap-2">
+            <div className="absolute bottom-0 left-0 right-0 h-[60px] bg-bg-card border-t border-border flex items-center px-5 gap-2">
               {project.links.notion && (
                 <LinkButton href={project.links.notion}>Notion ↗</LinkButton>
               )}
@@ -320,6 +181,184 @@ export default function ProjectDetailPanel({
   );
 }
 
+// ===== 내부 컴포넌트 =====
+function BackHeader({
+  title,
+  onClose,
+}: {
+  title: string;
+  onClose: () => void;
+}) {
+  return (
+    <div className="h-[52px] border-b border-border flex items-center px-5 gap-3 shrink-0 bg-bg-card">
+      <button
+        onClick={onClose}
+        className="flex items-center gap-1 hover:opacity-70 transition-opacity cursor-pointer"
+        aria-label="닫기"
+      >
+        <ChevronLeft size={16} color="#3560d4" />
+        <p className="text-role text-accent mt-0.5">뒤로</p>
+      </button>
+      <span className="text-section-title text-ink flex-1 truncate">
+        {title}
+      </span>
+    </div>
+  );
+}
+
+function Profile({
+  background,
+  project,
+}: {
+  background: string;
+  project: Project;
+}) {
+  return (
+    <div className="px-5 border-b border-border">
+      <div
+        className="w-12 h-12 rounded-full border-bg-card flex items-center justify-center text-profile-name text-white -mt-7"
+        style={{ background: background }}
+      >
+        이
+      </div>
+      <div className="flex flex-col p-3 gap-4">
+        <div className="flex flex-col gap-0.5">
+          <p className="text-profile-name text-ink">{project.title}</p>
+          <p className="text-role text-ink3 leading-normal">
+            {project.period} · {project.role}
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-2 mb-3">
+          {project.stack.map((s) => (
+            <span
+              key={s}
+              className="px-3 py-1 rounded-full text-chip border border-border-med text-ink2 bg-bg-sub"
+            >
+              {s}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Info({
+  background,
+  summary,
+  stack,
+}: {
+  background: string;
+  summary: string;
+  stack: string[];
+}) {
+  return (
+    <div className="flex flex-col px-5 py-4 border-b border-border gap-3">
+      <div className="flex gap-3 items-center">
+        <div
+          className="w-10 h-10 rounded-full flex items-center justify-center text-body font-bold text-white shrink-0"
+          style={{ background: background }}
+        >
+          이
+        </div>
+        <div>
+          <p className="text-feed text-ink">이서림</p>
+          <p className="text-meta text-ink3">@seoLeem · Frontend Developer</p>
+        </div>
+      </div>
+      <p className="text-tweet text-ink break-keep">{summary}</p>
+      <div className="flex flex-wrap gap-2">
+        {stack.map((s) => (
+          <span key={s} className="text-role" style={{ color: background }}>
+            #{s.replace(/[.\s/]/g, "")}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function TaskSection({
+  background,
+  project,
+}: {
+  background: string;
+  project: Project;
+}) {
+  return (
+    <SectionContainer label="주요 작업">
+      <div className="flex flex-col gap-4">
+        {project.works.map((w) => (
+          <div key={w.num} className="flex gap-3 items-baseline">
+            <div
+              className="w-6 h-6 rounded-full flex items-center justify-center text-label text-white shrink-0 mt-0.5"
+              style={{ background: background }}
+            >
+              {w.num}
+            </div>
+            <div className="flex-1 flex flex-col gap-1">
+              <p className="text-feed font-semibold text-ink">{w.summary}</p>
+              <p className="text-body text-ink2">{w.detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </SectionContainer>
+  );
+}
+
+function TechSection({
+  background,
+  project,
+  activeSkillIdx,
+  setActiveSkillIdx,
+}: {
+  background: string;
+  project: Project;
+  activeSkillIdx: number;
+  setActiveSkillIdx: (s: number) => void;
+}) {
+  return (
+    <SectionContainer label="기술 선택 이유">
+      <div>
+        <div className="flex flex-wrap gap-1 mb-3">
+          {project.skills.map((sk, i) => (
+            <button
+              key={sk.name}
+              onClick={() => setActiveSkillIdx(i)}
+              className={[
+                "px-3 py-1.5 rounded-full text-meta border transition-all duration-200",
+                activeSkillIdx === i
+                  ? "text-white border-transparent"
+                  : "text-ink2 border-border-med bg-transparent hover:bg-bg-sub",
+              ].join(" ")}
+              style={
+                activeSkillIdx === i
+                  ? { background: background, borderColor: background }
+                  : {}
+              }
+            >
+              {sk.name}
+            </button>
+          ))}
+        </div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeSkillIdx}
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
+            className="bg-bg-sub rounded-lg px-4 py-3 text-body text-ink2 min-h-16"
+          >
+            {project.skills[activeSkillIdx]?.reason}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </SectionContainer>
+  );
+}
+
 function LinkButton({
   href,
   children,
@@ -335,10 +374,10 @@ function LinkButton({
       target="_blank"
       rel="noopener noreferrer"
       className={[
-        "inline-flex items-center gap-1 px-[14px] py-[6px] rounded-[8px] text-[12px] font-medium transition-all duration-[220ms] no-underline",
+        "inline-flex items-center gap-1 px-4 py-1.5 rounded-[8px] text-body transition-all duration-200 no-underline",
         primary
-          ? "bg-[var(--p-accent)] text-white border border-[var(--p-accent)] hover:opacity-[.88]"
-          : "border border-[var(--p-border-med)] text-[var(--p-ink2)] hover:bg-[var(--p-bg-sub)]",
+          ? "bg-accent text-white border border-accent hover:opacity-[.88]"
+          : "border border-border-med text-ink2 hover:bg-bg-sub",
       ].join(" ")}
     >
       {children}
