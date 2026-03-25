@@ -27,7 +27,7 @@ export default function Topbar() {
           공유
         </button>
         <a
-          href="/resume.pdf"
+          href="/public/이서림_포트폴리오.pdf"
           download
           className={clsx(baseBtn, "bg-accent text-white hover:opacity-85")}
         >
