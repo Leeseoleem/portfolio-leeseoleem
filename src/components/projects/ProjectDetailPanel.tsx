@@ -52,6 +52,12 @@ export default function ProjectDetailPanel({
     : null;
   const isOpen = project !== null;
 
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (isOpen) closeButtonRef.current?.focus();
+  }, [isOpen]);
+
   const [activeSkillIdx, setActiveSkillIdx] = useState(0);
 
   // ESC 닫기
@@ -112,7 +118,11 @@ export default function ProjectDetailPanel({
             className="fixed top-0 right-0 bottom-0 z-201 w-[min(540px,100%)] flex flex-col bg-bg-card border-l border-border"
           >
             {/* ── 상단 바 ── */}
-            <BackHeader title={project.title} onClose={onClose} />
+            <BackHeader
+              title={project.title}
+              onClose={onClose}
+              closeButtonRef={closeButtonRef}
+            />
 
             {/* ── 스크롤 바디 ── */}
             <div
@@ -185,13 +195,16 @@ export default function ProjectDetailPanel({
 function BackHeader({
   title,
   onClose,
+  closeButtonRef,
 }: {
   title: string;
   onClose: () => void;
+  closeButtonRef: React.RefObject<HTMLButtonElement | null>;
 }) {
   return (
     <div className="h-[52px] border-b border-border flex items-center px-5 gap-3 shrink-0 bg-bg-card">
       <button
+        ref={closeButtonRef}
         onClick={onClose}
         className="flex items-center gap-1 hover:opacity-70 transition-opacity cursor-pointer"
         aria-label="닫기"
