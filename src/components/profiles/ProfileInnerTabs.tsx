@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useScroll } from "@/contexts/useScroll";
+
 import { AboutPanel } from "./AboutPanel";
 import { SkillsPanel } from "./SkillsPanel";
 
@@ -11,6 +13,8 @@ const TABS = [
 type TabId = (typeof TABS)[number]["id"];
 
 export function ProfileInnerTabs() {
+  const { scrollRef } = useScroll();
+
   const [activeTab, setActiveTab] = useState<TabId>("about");
 
   return (
@@ -53,6 +57,7 @@ export function ProfileInnerTabs() {
 
       {/* 탭 콘텐츠 */}
       <motion.div
+        ref={scrollRef as React.RefObject<HTMLDivElement>}
         key={activeTab}
         initial={{ opacity: 0, y: -6 }}
         animate={{ opacity: 1, y: 0 }}
