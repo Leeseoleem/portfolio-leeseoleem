@@ -14,7 +14,7 @@ export default function Topbar() {
     "flex items-center justify-center px-3 py-1 rounded-sm cursor-pointer text-body font-semibold";
 
   return (
-    <header className="flex flex-row items-center px-5 h-13 bg-bg-card border-b border-border">
+    <header className="flex flex-row items-center px-5 h-[52px] bg-bg-card border-b border-border">
       <p className="flex-1 text-section-title text-ink">{title}</p>
       <div className="flex flex-row items-center gap-2.5">
         <button
