@@ -246,7 +246,6 @@
   .text-label {
     font-size: var(--font-size-p-label);
     font-weight: 700;
-    color: var(--color-ink3);
     letter-spacing: var(--letter-spacing-p-label);
     line-height: var(--line-height-p-label);
   }
@@ -255,7 +254,6 @@
   .text-chip {
     font-size: var(--font-size-p-2xs);
     font-weight: 400;
-    color: var(--color-ink2);
     line-height: var(--line-height-p-2xs);
   }
 
@@ -263,7 +261,6 @@
   .text-meta {
     font-size: var(--font-size-p-xs);
     font-weight: 400;
-    color: var(--color-ink3);
     line-height: var(--line-height-p-xs);
   }
 
@@ -271,7 +268,6 @@
   .text-role {
     font-size: var(--font-size-p-sm);
     font-weight: 400;
-    color: var(--color-ink2);
     line-height: var(--line-height-p-sm);
   }
 
@@ -279,7 +275,6 @@
   .text-body {
     font-size: var(--font-size-p-body);
     font-weight: 400;
-    color: var(--color-ink2);
     line-height: var(--line-height-p-body);
   }
 
@@ -287,7 +282,6 @@
   .text-feed {
     font-size: var(--font-size-p-md);
     font-weight: 400;
-    color: var(--color-ink2);
     line-height: var(--line-height-p-md);
   }
 
@@ -295,7 +289,6 @@
   .text-tweet {
     font-size: var(--font-size-p-lg);
     font-weight: 400;
-    color: var(--color-ink);
     line-height: var(--line-height-p-lg);
   }
 
@@ -303,7 +296,6 @@
   .text-section-title {
     font-size: var(--font-size-p-title);
     font-weight: 700;
-    color: var(--color-ink);
     line-height: var(--line-height-p-title);
   }
 
@@ -311,7 +303,6 @@
   .text-profile-name {
     font-size: var(--font-size-p-name);
     font-weight: 700;
-    color: var(--color-ink);
     line-height: var(--line-height-p-name);
   }
 }
