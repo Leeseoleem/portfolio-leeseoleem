@@ -58,7 +58,11 @@ export default function ProjectsPage() {
           </p>
         )}
       </div>
-      <ProjectDetailPanel projectId={openId} onClose={() => setOpenId(null)} />
+      <ProjectDetailPanel
+        key={openId ?? "closed"}
+        projectId={openId}
+        onClose={() => setOpenId(null)}
+      />
     </div>
   );
 }
