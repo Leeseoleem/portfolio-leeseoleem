@@ -1,111 +1,308 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+@import "tailwindcss";
+
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  /* Accent */
+  --p-accent: #4f7ef7;
+  --p-accent-light: #eef3fe;
+  --p-accent-dark: #3560d4;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  /* Background */
+  --p-bg: #f5f4f0;
+  --p-bg-page: #fefdf9;
+  --p-bg-card: #ffffff;
+  --p-bg-sub: #f1efe8;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Text */
+  --p-ink: #1a1a1a;
+  --p-ink2: #555552;
+  --p-ink3: #999894;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  /* Border */
+  --p-border: rgba(0, 0, 0, 0.08);
+  --p-border-med: rgba(0, 0, 0, 0.13);
+
+  /* Project point colors */
+  --p-proj-blue: #4f7ef7;
+  --p-proj-green: #1d9e75;
+  --p-proj-pink: #d4537e;
+  --p-proj-amber: #ba7517;
+  --p-proj-blue-light: #eef3fe;
+  --p-proj-green-light: #e1f5ee;
+  --p-proj-pink-light: #fbeaf0;
+  --p-proj-amber-light: #faeeda;
 }
 
+/* ────────────────────────────────────────
+   2. Dark mode 오버라이드
+   시스템 설정(prefers-color-scheme) + 수동 .dark 클래스 동시 지원
+──────────────────────────────────────── */
+
+/* 시스템 다크모드 자동 감지 */
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+    --p-bg: #1c1c1e;
+    --p-bg-page: #1c1c1e;
+    --p-bg-card: #2c2c2e;
+    --p-bg-sub: #3a3a3c;
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
+    --p-ink: #f2f2f7;
+    --p-ink2: #aeaeb2;
+    --p-ink3: #636366;
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
+    --p-border: rgba(255, 255, 255, 0.1);
+    --p-border-med: rgba(255, 255, 255, 0.18);
 
-body {
-  margin: 0;
-}
-
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+    --p-accent-light: #1c2a4a;
+    --p-proj-blue-light: #1c2a4a;
+    --p-proj-green-light: #0a2a1f;
+    --p-proj-pink-light: #2a0f18;
+    --p-proj-amber-light: #2a1a05;
   }
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
+
+/* 수동 토글용 (.dark 클래스를 <html>에 붙이면 강제 다크) */
+.dark {
+  --p-bg: #1c1c1e;
+  --p-bg-page: #1c1c1e;
+  --p-bg-card: #2c2c2e;
+  --p-bg-sub: #3a3a3c;
+
+  --p-ink: #f2f2f7;
+  --p-ink2: #aeaeb2;
+  --p-ink3: #636366;
+
+  --p-border: rgba(255, 255, 255, 0.1);
+  --p-border-med: rgba(255, 255, 255, 0.18);
+
+  --p-accent-light: #1c2a4a;
+  --p-proj-blue-light: #1c2a4a;
+  --p-proj-green-light: #0a2a1f;
+  --p-proj-pink-light: #2a0f18;
+  --p-proj-amber-light: #2a1a05;
+}
+
+/* 수동으로 라이트 고정할 때 (.light 클래스를 <html>에 붙이면 강제 라이트) */
+.light {
+  --p-bg: #f5f4f0;
+  --p-bg-page: #fefdf9;
+  --p-bg-card: #ffffff;
+  --p-bg-sub: #f1efe8;
+
+  --p-ink: #1a1a1a;
+  --p-ink2: #555552;
+  --p-ink3: #999894;
+
+  --p-border: rgba(0, 0, 0, 0.08);
+  --p-border-med: rgba(0, 0, 0, 0.13);
+
+  --p-accent-light: #eef3fe;
+  --p-proj-blue-light: #eef3fe;
+  --p-proj-green-light: #e1f5ee;
+  --p-proj-pink-light: #fbeaf0;
+  --p-proj-amber-light: #faeeda;
+}
+
+@theme inline {
+  /* ── 폰트 ── */
+  --font-sans: "Pretendard Variable", "Pretendard", "Noto Sans KR", sans-serif;
+
+  /* ── 텍스트 스케일 ── */
+
+  /* 10px — 섹션 라벨, 카드 lbl, stat 하단, bkey
+     예) .card-lbl .sk-lbl .dt-ss-label .ph-stat-l */
+  --font-size-p-label: 10px;
+  --line-height-p-label: 1;
+  --letter-spacing-p-label: 0.08em;
+
+  /* 10.5px — 피드 필 태그, 상세패널 프로필 칩
+     예) .fi-pill .dt-profile-chip */
+  --font-size-p-2xs: 10.5px;
+  --line-height-p-2xs: 1.5;
+
+  /* 11px — 피드 날짜, 트윗 서브, 스킬 탭
+     예) .fi-date .dt-tweet-sub .itab */
+  --font-size-p-xs: 11px;
+  --line-height-p-xs: 1.5;
+
+  /* 11.5px — 프로필 핸들, 경력 역할, 상세패널 메타
+     예) .ph-handle .tw-role .dt-profile-meta */
+  --font-size-p-sm: 11.5px;
+  --line-height-p-sm: 1.5;
+
+  /* 12px — 탑바 버튼, 스킬 pill, 링크 버튼, 트윗 태그
+     예) .tb-btn .sk-pill .dt-link .dt-tweet-tag */
+  --font-size-p-base: 12px;
+  --line-height-p-base: 1.65;
+
+  /* 12.5px — 본문: About 메모, 바이오, quote, skill-reason
+     예) .ph-bio .memo-item .quote .skill-reason .ct-desc */
+  --font-size-p-body: 12.5px;
+  --line-height-p-body: 1.75;
+
+  /* 13px — 피드 이름/본문, 사이드바 레이블, 작업 제목
+     예) .fi-name .fi-text .sb-lbl .dt-work-title */
+  --font-size-p-md: 13px;
+  --line-height-p-md: 1.65;
+
+  /* 13.5px — 트윗 본문(프로젝트 설명), 경력 조직명
+     예) .dt-tweet-body .tw-org */
+  --font-size-p-lg: 13.5px;
+  --line-height-p-lg: 1.75;
+
+  /* 14px — 탑바 타이틀, 섹션 타이틀, 이메일 버튼
+     예) .tb-title .ct-title .dt-panel-title */
+  --font-size-p-title: 14px;
+  --line-height-p-title: 1.4;
+
+  /* 15px — 스탯 숫자
+     예) .ph-stat-n */
+  --font-size-p-stat: 15px;
+  --line-height-p-stat: 1;
+
+  /* 17px — 프로필 이름, 상세패널 프로젝트 이름
+     예) .ph-name .dt-profile-name */
+  --font-size-p-name: 17px;
+  --line-height-p-name: 1.3;
+
+  /* 18px — 상세패널 아바타 이니셜
+     예) .dt-avatar */
+  --font-size-p-avatar: 18px;
+  --line-height-p-avatar: 1;
+
+  /* ── 색상 — raw CSS 변수 참조 ── */
+
+  /* Accent */
+  --color-accent: var(--p-accent);
+  --color-accent-light: var(--p-accent-light);
+  --color-accent-dark: var(--p-accent-dark);
+
+  /* Background */
+  --color-bg: var(--p-bg);
+  --color-bg-page: var(--p-bg-page);
+  --color-bg-card: var(--p-bg-card);
+  --color-bg-sub: var(--p-bg-sub);
+
+  /* Text */
+  --color-ink: var(--p-ink);
+  --color-ink2: var(--p-ink2);
+  --color-ink3: var(--p-ink3);
+
+  /* Border */
+  --color-border: var(--p-border);
+  --color-border-med: var(--p-border-med);
+
+  /* Project point colors */
+  --color-proj-blue: var(--p-proj-blue);
+  --color-proj-green: var(--p-proj-green);
+  --color-proj-pink: var(--p-proj-pink);
+  --color-proj-amber: var(--p-proj-amber);
+  --color-proj-blue-light: var(--p-proj-blue-light);
+  --color-proj-green-light: var(--p-proj-green-light);
+  --color-proj-pink-light: var(--p-proj-pink-light);
+  --color-proj-amber-light: var(--p-proj-amber-light);
+
+  /* ── 반경 ── */
+  --radius-card: 12px;
+  --radius-sm: 8px;
+  --radius-pill: 9999px;
+
+  /* ── 레이아웃 ── */
+  --sidebar-w: 60px;
+  --topbar-h: 52px;
+  --bottombar-h: 60px;
+
+  /* ── 모션 ── */
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 0.15s;
+  --duration-base: 0.22s;
+  --transition-base: var(--duration-base) var(--ease-default);
+}
+
+/* ────────────────────────────────────────
+   4. Base layer — 전역 기본값
+──────────────────────────────────────── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg);
+    color: var(--color-ink);
   }
 }
-p {
-  margin: 0;
-}
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
+/* ────────────────────────────────────────
+   5. Components layer — 텍스트 스타일 헬퍼
+   @apply로 Tailwind 유틸과 조합하거나 단독 클래스로 사용
+──────────────────────────────────────── */
+@layer components {
+  /* 섹션 라벨 (ABOUT ME, SKILLS, SCREENSHOTS ...) */
+  .text-label {
+    font-size: var(--font-size-p-label);
+    font-weight: 700;
+    letter-spacing: var(--letter-spacing-p-label);
+    line-height: var(--line-height-p-label);
+  }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+  /* pill · chip · 태그 */
+  .text-chip {
+    font-size: var(--font-size-p-2xs);
+    font-weight: 400;
+    line-height: var(--line-height-p-2xs);
+  }
+
+  /* 날짜, 핸들, 서브텍스트 */
+  .text-meta {
+    font-size: var(--font-size-p-xs);
+    font-weight: 400;
+    line-height: var(--line-height-p-xs);
+  }
+
+  /* 역할, 경력 서브, 상세패널 메타 */
+  .text-role {
+    font-size: var(--font-size-p-sm);
+    font-weight: 400;
+    line-height: var(--line-height-p-sm);
+  }
+
+  /* 본문 — About 소개, quote, skill reason */
+  .text-body {
+    font-size: var(--font-size-p-body);
+    font-weight: 400;
+    line-height: var(--line-height-p-body);
+  }
+
+  /* 피드 본문, 사이드바 레이블 */
+  .text-feed {
+    font-size: var(--font-size-p-md);
+    font-weight: 400;
+    line-height: var(--line-height-p-md);
+  }
+
+  /* 트윗 본문, 경력 조직명 */
+  .text-tweet {
+    font-size: var(--font-size-p-lg);
+    font-weight: 400;
+    line-height: var(--line-height-p-lg);
+  }
+
+  /* 탑바 타이틀, 섹션 타이틀 */
+  .text-section-title {
+    font-size: var(--font-size-p-title);
+    font-weight: 700;
+    line-height: var(--line-height-p-title);
+  }
+
+  /* 프로필 이름, 상세패널 프로젝트 이름 */
+  .text-profile-name {
+    font-size: var(--font-size-p-name);
+    font-weight: 700;
+    line-height: var(--line-height-p-name);
+  }
 }
