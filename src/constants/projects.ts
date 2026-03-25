@@ -1,4 +1,10 @@
-import type { ProjectColor, Project } from "../types/projects";
+import type { ProjectFilter, ProjectColor, Project } from "../types/projects";
+
+export const FILTER_LABEL: { type: ProjectFilter; label: string }[] = [
+  { type: "all", label: "전체" },
+  { type: "personal", label: "개인" },
+  { type: "team", label: "팀" },
+];
 
 // 포인트 컬러 상수
 export const PROJECT_COLORS: Record<

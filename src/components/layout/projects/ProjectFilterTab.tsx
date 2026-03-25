@@ -1,16 +1,11 @@
 import type { ProjectFilter } from "../../../types/projects";
+import { FILTER_LABEL } from "../../../constants/projects";
 
 interface ProjectFilterTabProps {
   active: ProjectFilter;
   counts: Record<ProjectFilter, number>;
   onChange: (type: ProjectFilter) => void;
 }
-
-const TABS: { type: ProjectFilter; label: string }[] = [
-  { type: "all", label: "전체" },
-  { type: "personal", label: "개인" },
-  { type: "team", label: "팀" },
-];
 
 export default function ProjectFilterTab({
   active,
@@ -21,7 +16,7 @@ export default function ProjectFilterTab({
     <div className="flex items-center justify-between px-5 py-3 bg-bg-card">
       {/* 탭 */}
       <div className="flex gap-1">
-        {TABS.map(({ type, label }) => (
+        {FILTER_LABEL.map(({ type, label }) => (
           <button
             key={type}
             onClick={() => onChange(type)}
