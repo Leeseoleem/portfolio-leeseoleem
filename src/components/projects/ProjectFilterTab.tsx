@@ -15,9 +15,11 @@ export default function ProjectFilterTab({
   return (
     <div className="flex items-center justify-between px-5 py-3 bg-bg-card">
       {/* 탭 */}
-      <div className="flex gap-1">
+      <div className="flex gap-1" role="group" aria-label="프로젝트 필터">
         {FILTER_LABEL.map(({ type, label }) => (
           <button
+            type="button"
+            aria-pressed={active === type}
             key={type}
             onClick={() => onChange(type)}
             className={[
