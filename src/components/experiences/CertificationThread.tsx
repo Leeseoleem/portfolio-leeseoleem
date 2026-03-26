@@ -8,7 +8,7 @@ export function CertificationThread() {
   return (
     <ExperienceContainer icon={Award} label="Certifications">
       {CERTS.map((cert) => (
-        <CertificationItem cert={cert} />
+        <CertificationItem key={cert.name} cert={cert} />
       ))}
     </ExperienceContainer>
   );
