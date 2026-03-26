@@ -17,7 +17,11 @@ export default function Sidebar() {
     <aside className="hidden md:flex flex-col h-full w-[60px] hover:w-[220px] bg-bg-card border-r border-border overflow-hidden transition-all duration-200 ease-[cubic-bezier(.4,0,.2,1)] group">
       {/* 브랜드 */}
       <div className="flex items-center gap-4 px-3 py-5">
-        <img src="/favicon.svg" className="w-8 h-8 shrink-0" />
+        <img
+          src="/favicon.svg"
+          alt="프로필 로고"
+          className="w-8 h-8 shrink-0"
+        />
         <span className="text-section-title text-ink text-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
           이서림
         </span>
