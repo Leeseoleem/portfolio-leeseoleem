@@ -3,7 +3,7 @@ import type { ExperienceItemData, Cert } from "@/types/experience";
 export const ITEMS: ExperienceItemData[] = [
   {
     id: "hotgama",
-    color: "blue" as const,
+    color: "blue",
     org: "팀 푸른핫가마",
     period: "2025.05 — 현재",
     role: "Frontend Developer · UX/UI Designer",
@@ -12,7 +12,7 @@ export const ITEMS: ExperienceItemData[] = [
   },
   {
     id: "velog",
-    color: "green" as const,
+    color: "green",
     org: "Velog 기술 블로그",
     period: "2024.06 — 현재",
     role: "개인 운영",
@@ -21,7 +21,7 @@ export const ITEMS: ExperienceItemData[] = [
   },
   {
     id: "chaesik",
-    color: "pink" as const,
+    color: "pink",
     org: "졸업 프로젝트 — 채식어디",
     period: "2024.03 — 2024.10",
     role: "Team Lead · Frontend Developer · UX/UI Designer",
@@ -30,7 +30,7 @@ export const ITEMS: ExperienceItemData[] = [
   },
   {
     id: "boostcourse",
-    color: "amber" as const,
+    color: "amber",
     org: "네이버 부스트코스",
     period: "2024.05 — 2024.06",
     role: "Let's AI 2024 코칭스터디 수료",
