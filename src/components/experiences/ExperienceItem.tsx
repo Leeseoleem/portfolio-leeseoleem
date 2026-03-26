@@ -51,7 +51,9 @@ export function ExperienceItem({
           </div>
           <div className="text-role text-ink2">{role}</div>
         </div>
-        <div className="text-body text-ink leading-[1.7]">{desc}</div>
+        <div className="text-body text-ink leading-[1.7] whitespace-pre-line">
+          {desc}
+        </div>
         <div className="flex gap-2 flex-wrap">
           {tags.map((tag) => (
             <span key={tag} className="text-role text-accent font-medium">
