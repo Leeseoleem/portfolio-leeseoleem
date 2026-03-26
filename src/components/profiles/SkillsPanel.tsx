@@ -5,7 +5,7 @@ export function SkillsPanel() {
   return (
     <div className="p-4 flex flex-col gap-4">
       {SKILL_GROUPS.map((group) => (
-        <CardContainer label={group.label}>
+        <CardContainer key={group.label} label={group.label}>
           <div className="flex flex-wrap gap-2 py-1">
             {group.skills.map((skill) => (
               <span
