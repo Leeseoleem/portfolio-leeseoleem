@@ -1,9 +1,8 @@
 interface IconProps {
-  color?: string;
   size?: number;
 }
 
-export function GitHubIcon({ size = 18 }: Pick<IconProps, "size">) {
+export function GitHubIcon({ size = 18 }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 18 18" fill="none">
       <path
