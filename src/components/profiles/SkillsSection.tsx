@@ -38,7 +38,10 @@ export function SkillsSection() {
   return (
     <CardContainer label="SKILLS">
       {/* 탭 바 */}
-      <div className="flex gap-4 border-b border-border -mx-3.75 px-4 mb-3">
+      <div
+        className="flex gap-4 border-b border-border -mx-3.75 px-4 mb-3 overflow-x-auto scroll"
+        style={{ scrollbarWidth: "none" }}
+      >
         {TABS.map((tab) => {
           const isActive = tab.id === activeTab;
           return (
@@ -47,7 +50,7 @@ export function SkillsSection() {
               type="button"
               onClick={() => handleTabChange(tab.id)}
               className={clsx(
-                "w-full relative pt-2 pb-1.5 text-role whitespace-nowrap border-none bg-transparent cursor-pointer transition-colors duration-200",
+                "shrink-0 flex-1 relative pt-2 pb-1.5 text-role whitespace-nowrap border-none bg-transparent cursor-pointer transition-colors duration-200",
                 isActive
                   ? "text-accent font-bold"
                   : "text-ink3 hover:text-ink font-medium",
