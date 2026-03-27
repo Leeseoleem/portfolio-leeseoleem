@@ -80,9 +80,9 @@ export function SkillsSection() {
         transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] as const }}
         className="flex flex-wrap gap-2"
       >
-        {visibleSkills.map((skill) => (
+        {visibleSkills.map((skill, index) => (
           <span
-            key={skill}
+            key={`${activeTab}-${skill}-${index}`}
             className="
                 px-3 py-1.5 rounded-full
                 text-body text-ink
