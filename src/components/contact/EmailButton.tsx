@@ -4,6 +4,7 @@ import { PROFILE_ROWS } from "@/constants/profile";
 
 export function EmailButton() {
   const mailRow = PROFILE_ROWS.find((row) => row.key === "MAIL");
+  if (!mailRow?.href || !mailRow.value) return null;
   return (
     <a
       className={clsx(
@@ -11,10 +12,10 @@ export function EmailButton() {
         "hover:bg-accent/80 ",
         "text-feed text-white",
       )}
-      href={mailRow?.href}
+      href={mailRow.href}
     >
       <Mail size={16} color="#ffffff" />
-      이메일 보내기 — {mailRow?.value}
+      이메일 보내기 — {mailRow.value}
     </a>
   );
 }
