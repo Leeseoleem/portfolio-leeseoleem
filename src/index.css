@@ -242,67 +242,142 @@
    @apply로 Tailwind 유틸과 조합하거나 단독 클래스로 사용
 ──────────────────────────────────────── */
 @layer components {
-  /* 섹션 라벨 (ABOUT ME, SKILLS, SCREENSHOTS ...) */
+  /* ── 섹션 라벨 ── */
   .text-label {
-    font-size: var(--font-size-p-label);
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: var(--letter-spacing-p-label);
-    line-height: var(--line-height-p-label);
+    letter-spacing: 0.08em;
+    line-height: 1;
+
+    @media (min-width: 768px) {
+      font-size: 11px;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 11.5px;
+    }
   }
 
-  /* pill · chip · 태그 */
+  /* ── pill · chip · 태그 ── */
   .text-chip {
-    font-size: var(--font-size-p-2xs);
-    font-weight: 500;
-    line-height: var(--line-height-p-2xs);
+    font-size: 10.5px;
+    font-weight: 400;
+    line-height: 1.5;
+
+    @media (min-width: 768px) {
+      font-size: 11.5px;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 12px;
+    }
   }
 
-  /* 날짜, 핸들, 서브텍스트 */
+  /* ── 날짜, 핸들, 서브텍스트 ── */
   .text-meta {
-    font-size: var(--font-size-p-xs);
-    font-weight: 500;
-    line-height: var(--line-height-p-xs);
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.5;
+
+    @media (min-width: 768px) {
+      font-size: 12px;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 12.5px;
+    }
   }
 
-  /* 역할, 경력 서브, 상세패널 메타 */
+  /* ── 역할, 경력 서브, 상세패널 메타 ── */
   .text-role {
-    font-size: var(--font-size-p-sm);
-    font-weight: 500;
-    line-height: var(--line-height-p-sm);
+    font-size: 11.5px;
+    font-weight: 400;
+    line-height: 1.5;
+
+    @media (min-width: 768px) {
+      font-size: 12.5px;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 13px;
+    }
   }
 
-  /* 본문 — About 소개, quote, skill reason */
+  /* ── 본문 — About 소개, quote, skill reason ── */
   .text-body {
-    font-size: var(--font-size-p-body);
-    font-weight: 500;
-    line-height: var(--line-height-p-body);
+    font-size: 12.5px;
+    font-weight: 400;
+    line-height: 1.75;
+
+    @media (min-width: 768px) {
+      font-size: 13.5px;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 15px;
+      line-height: 1.8;
+    }
   }
 
-  /* 피드 본문, 사이드바 레이블 */
+  /* ── 피드 본문, 사이드바 레이블 ── */
   .text-feed {
-    font-size: var(--font-size-p-md);
-    font-weight: 500;
-    line-height: var(--line-height-p-md);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.65;
+
+    @media (min-width: 768px) {
+      font-size: 14px;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 15.5px;
+      line-height: 1.7;
+    }
   }
 
-  /* 트윗 본문, 경력 조직명 */
+  /* ── 트윗 본문, 경력 조직명 ── */
   .text-tweet {
-    font-size: var(--font-size-p-lg);
-    font-weight: 500;
-    line-height: var(--line-height-p-lg);
+    font-size: 13.5px;
+    font-weight: 400;
+    line-height: 1.75;
+
+    @media (min-width: 768px) {
+      font-size: 14.5px;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 16px;
+      line-height: 1.8;
+    }
   }
 
-  /* 탑바 타이틀, 섹션 타이틀 */
+  /* ── 탑바 타이틀, 섹션 타이틀 ── */
   .text-section-title {
-    font-size: var(--font-size-p-title);
+    font-size: 14px;
     font-weight: 700;
-    line-height: var(--line-height-p-title);
+    line-height: 1.4;
+
+    @media (min-width: 768px) {
+      font-size: 15px;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 17px;
+    }
   }
 
-  /* 프로필 이름, 상세패널 프로젝트 이름 */
+  /* ── 프로필 이름, 상세패널 프로젝트 이름 ── */
   .text-profile-name {
-    font-size: var(--font-size-p-name);
+    font-size: 17px;
     font-weight: 700;
-    line-height: var(--line-height-p-name);
+    line-height: 1.3;
+
+    @media (min-width: 768px) {
+      font-size: 18px;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 20px;
+    }
   }
 }
