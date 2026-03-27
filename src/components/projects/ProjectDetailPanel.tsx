@@ -14,9 +14,6 @@ interface ProjectDetailPanelProps {
   onClose: () => void;
 }
 
-// ── 애니메이션 variants ────────────────────────
-//  패널: 오른쪽 밖(x: '100%')에서 제자리(x: 0)로
-//  백드롭: 투명(opacity: 0)에서 불투명(opacity: 1)로
 const panelVariants = {
   hidden: { x: "100%" },
   visible: { x: 0 },
@@ -29,14 +26,12 @@ const backdropVariants = {
   exit: { opacity: 0 },
 };
 
-// spring 대신 ease curve로 HTML 프로토타입과 동일한 feel 유지
 const TRANSITION = {
   type: "tween",
-  ease: [0.4, 0, 0.2, 1], // cubic-bezier(.4,0,.2,1) — Material easing
+  ease: [0.4, 0, 0.2, 1],
   duration: 0.28,
 } as const;
 
-// 백드롭은 패널보다 약간 빠르게
 const BACKDROP_TRANSITION = {
   type: "tween",
   ease: [0.4, 0, 0.2, 1],
@@ -87,7 +82,6 @@ export default function ProjectDetailPanel({
   const colors = project ? PROJECT_COLORS[project.color] : PROJECT_COLORS.blue;
 
   return (
-    // AnimatePresence: isOpen이 false가 되면 exit 애니메이션 실행 후 DOM에서 제거
     <AnimatePresence>
       {isOpen && (
         <>

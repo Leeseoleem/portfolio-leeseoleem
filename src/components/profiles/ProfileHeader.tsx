@@ -20,21 +20,9 @@ export function ProfileHeader() {
             {PROFILE.handle} · {PROFILE.role}
           </p>
         </div>
-        <p className="text-body text-ink2 leading-[1.65] whitespace-pre-line">
+        <p className="text-tweet font-medium text-ink2 leading-[1.2] whitespace-pre-line">
           {PROFILE.bio}
         </p>
-
-        {/* 스킬 */}
-        <div className="flex gap-1 flex-wrap mt-0.5">
-          {PROFILE.skills.map((skill) => (
-            <span
-              key={skill}
-              className="px-3 py-1 rounded-full text-meta text-ink2 border border-border-med bg-bg-sub"
-            >
-              {skill}
-            </span>
-          ))}
-        </div>
       </div>
     </div>
   );

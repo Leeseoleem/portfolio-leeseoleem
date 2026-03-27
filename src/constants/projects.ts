@@ -30,7 +30,7 @@ export const PROJECTS: Project[] = [
     id: "birthday-card",
     title: "인터랙티브 생일 카드",
     summary:
-      "생일 축하 메시지를 인터랙티브한 이벤트로 전달하는 웹 서비스. Supabase 익명 인증 + RPC 기반 접근 제어 직접 설계.",
+      "생일 축하 메시지를 인터랙티브한 이벤트로 전달하는 웹 서비스. Supabase 익명 인증 + RPC 기반 접근 제어 설계.",
     type: "personal",
     period: "2026.01 — 2026.03",
     role: "Frontend Developer & UX/UI Designer",
@@ -87,9 +87,10 @@ export const PROJECTS: Project[] = [
     ],
     // 아직 이미지 없으면 빈 배열 유지 → 플레이스홀더 표시
     links: {
-      notion: "#",
-      github: "#",
-      live: "#",
+      notion:
+        "https://www.notion.so/My-Little-birthday-Party-2cc51f6a37ed80a6b99ffaed5681e063?source=copy_link",
+      github: "https://github.com/Leeseoleem/my-little-birthday-party",
+      live: "https://my-little-birthday-party.vercel.app/",
     },
   },
 
@@ -157,7 +158,7 @@ export const PROJECTS: Project[] = [
       },
     ],
     links: {
-      github: "#",
+      github: "https://github.com/T-BluePot/barogagi-front",
     },
     inProgress: true,
   },
@@ -218,9 +219,62 @@ export const PROJECTS: Project[] = [
       },
     ],
     links: {
-      notion: "#",
-      github: "#",
+      notion:
+        "https://www.notion.so/7db36a8398684b36b0bcf3d89c2be948?source=copy_link",
+      github: "https://github.com/VRRS-Project-Team-GitPage",
       live: "#",
+    },
+  },
+  {
+    id: "portfolio",
+    title: "포트폴리오 웹사이트",
+    summary:
+      "SNS 감성 UI로 설계한 개인 포트폴리오. 탭 구조 기반 정보 설계 + 슬라이드 패널 상세 전환.",
+    type: "personal",
+    period: "2026.03",
+    role: "Frontend Developer & UX/UI Designer",
+    stack: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "Framer Motion",
+      "TanStack Router",
+    ],
+    color: "blue",
+    tags: ["개인 프로젝트", "UX/UI 설계", "정보 구조 설계"],
+    skills: [
+      {
+        name: "Tailwind CSS",
+        reason:
+          "디자인 시스템을 한 곳에서 관리하고, 다크모드 설정을 CSS 변수 오버라이드만으로 처리 가능해 선택했어요.",
+      },
+      {
+        name: "Framer Motion",
+        reason:
+          "마운트·언마운트 타이밍을 선언형으로 제어 가능해 선택했어요. 슬라이드 패널의 진입·이탈 애니메이션을 AnimatePresence로 직관적으로 구현할 수 있었습니다.",
+      },
+    ],
+    screenshots: [],
+    works: [
+      {
+        num: "1",
+        summary: "SNS 탭 구조 기반 정보 설계",
+        detail:
+          "콘텐츠를 처음 접할 때 시선은 내용보다 구조에 먼저 닿습니다. SNS에서 이미 체화된 탭 구조를 적용해, 구조를 파악하는 과정 없이 원하는 섹션에 바로 진입할 수 있도록 설계했습니다.",
+      },
+      {
+        num: "2",
+        summary: "슬라이드 패널 기반 프로젝트 상세 전환",
+        detail:
+          "상세 페이지로 이동하면 목록 복귀 비용이 생기고 여러 프로젝트를 비교하는 흐름이 끊깁니다. 페이지 전환 대신 AnimatePresence 기반 슬라이드 패널로 전환해 목록 컨텍스트를 유지한 채 상세 정보를 전달할 수 있도록 구현했습니다.",
+      },
+    ],
+    links: {
+      notion:
+        "https://www.notion.so/32171eb06984801aa2c5e15e3f7cd0bb?source=copy_link",
+      github: "https://github.com/Leeseoleem/portfolio-leeseoleem",
+      live: "https://portfolio-leeseoleem.vercel.app",
     },
   },
 ];

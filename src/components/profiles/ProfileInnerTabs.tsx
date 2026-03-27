@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 import { useScroll } from "@/contexts/useScroll";
 
 import { AboutPanel } from "./AboutPanel";
-import { SkillsPanel } from "./SkillsPanel";
+import { ProfilePanel } from "./ProfilePanel";
 
 const TABS = [
   { id: "about", label: "About me" },
-  { id: "skills", label: "Skills" },
+  { id: "profile", label: "Profile" },
 ] as const;
 
 type TabId = (typeof TABS)[number]["id"];
@@ -31,7 +31,7 @@ export function ProfileInnerTabs() {
               onClick={() => setActiveTab(tab.id)}
               className={`
                 relative flex-1 pt-3 pb-2 
-                text-role
+                text-feed
                 border-none bg-bg-card cursor-pointer
                 transition-colors duration-200
                 ${isActive ? "text-accent" : "text-ink3"}
@@ -64,7 +64,7 @@ export function ProfileInnerTabs() {
         transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
         className="flex-1 overflow-y-auto min-h-0"
       >
-        {activeTab === "about" ? <AboutPanel /> : <SkillsPanel />}
+        {activeTab === "about" ? <AboutPanel /> : <ProfilePanel />}
       </motion.div>
     </div>
   );
