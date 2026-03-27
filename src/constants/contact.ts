@@ -12,7 +12,7 @@ export const CONTACT_LINKS: ContactLink[] = [
   {
     id: "linkedin",
     label: "LINKEDIN",
-    value: "linkedin.com/in/%EC%84%9C%EB%A6%BC-%EC%9D%B4-84944a355",
+    value: "linkedin.com/in/Leeseoleem",
     href: "https://www.linkedin.com/in/%EC%84%9C%EB%A6%BC-%EC%9D%B4-84944a355",
     iconType: "linkedin",
     bgColor: "#E8F0FE",
