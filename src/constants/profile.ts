@@ -5,7 +5,7 @@ export const PROFILE = {
   handle: "@seoLeem",
   role: "Frontend Developer & UX/UI Designer",
   bio: "디자이너의 눈으로 설계하고,\n개발자의 손으로 구현하는 프론트엔드 개발자",
-  email: "dltjrim1014@naver.com",
+  email: "leeseorim0029@gmail.com",
   tel: "010-6330-1844",
   edu: "신한대학교 컴퓨터공학과 / 행정학과 (2021-2025)",
   location: "서울",
@@ -18,8 +18,8 @@ export const PROFILE_ROWS = [
   { key: "EDU", value: "신한대학교 컴퓨터공학과 / 행정학과 (2021–2025)" },
   {
     key: "MAIL",
-    value: "dltjrim1014@naver.com",
-    href: "mailto:dltjrim1014@naver.com",
+    value: "leeseorim0029@gmail.com",
+    href: "mailto:leeseorim0029@gmail.com",
   },
   { key: "TEL", value: "010-6330-1844" },
 ] as const;
