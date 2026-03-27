@@ -48,6 +48,7 @@ export function SkillsSection() {
             <button
               key={tab.id}
               type="button"
+              aria-pressed={isActive}
               onClick={() => handleTabChange(tab.id)}
               className={clsx(
                 "shrink-0 flex-1 relative pt-2 pb-1.5 text-role whitespace-nowrap border-none bg-transparent cursor-pointer transition-colors duration-200",
