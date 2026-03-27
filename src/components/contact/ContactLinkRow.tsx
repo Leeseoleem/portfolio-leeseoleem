@@ -3,9 +3,18 @@ import { GitHubIcon, VelogIcon, LinkedInIcon } from "./ContactIcons";
 import { type ContactLink } from "@/types/contact";
 
 function renderIcon(type: ContactLink["iconType"]) {
-  if (type === "github") return <GitHubIcon />;
-  if (type === "linkedin") return <LinkedInIcon />;
-  return <VelogIcon />;
+  switch (type) {
+    case "github":
+      return <GitHubIcon />;
+    case "linkedin":
+      return <LinkedInIcon />;
+    case "velog":
+      return <VelogIcon />;
+    default: {
+      const _exhaustive: never = type;
+      throw new Error(`Unsupported icon type: ${_exhaustive}`);
+    }
+  }
 }
 
 interface Props {
