@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import clsx from "clsx";
 
+import { useScroll } from "@/contexts/useScroll";
 import { SKILL_GROUPS } from "@/constants/profile";
 
 import { CardContainer } from "./CardContainer";
@@ -17,7 +18,17 @@ const TABS: { id: TabId; label: string }[] = [
 ];
 
 export function SkillsSection() {
+  const { scrollRef } = useScroll();
   const [activeTab, setActiveTab] = useState<TabId>(ALL_LABEL);
+
+  const handleTabChange = (id: TabId) => {
+    setActiveTab(id);
+    requestAnimationFrame(() => {
+      if (scrollRef.current) {
+        scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      }
+    });
+  };
 
   const visibleSkills =
     activeTab === ALL_LABEL
@@ -34,7 +45,7 @@ export function SkillsSection() {
             <button
               key={tab.id}
               type="button"
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => handleTabChange(tab.id)}
               className={clsx(
                 "w-full relative pt-2 pb-1.5 text-role whitespace-nowrap border-none bg-transparent cursor-pointer transition-colors duration-200",
                 isActive
