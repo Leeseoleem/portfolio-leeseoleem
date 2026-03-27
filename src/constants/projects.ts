@@ -274,7 +274,7 @@ export const PROJECTS: Project[] = [
       notion:
         "https://www.notion.so/32171eb06984801aa2c5e15e3f7cd0bb?source=copy_link",
       github: "https://github.com/Leeseoleem/portfolio-leeseoleem",
-      live: "https://portfolio-leeseoleem.vercel.app",
+      live: "https://portfolio-leeseoleem-front.vercel.app",
     },
   },
 ];
