@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "cmd /c \"rmdir /s /q node_modules\\.vite 2>nul & rmdir /s /q dist 2>nul & tsc -b && vite build\"",
     "lint": "eslint .",
     "preview": "vite preview"
   },
