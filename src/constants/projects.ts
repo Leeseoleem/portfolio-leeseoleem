@@ -275,7 +275,40 @@ export const PROJECTS: Project[] = [
           "팀원 전원이 기존에 사용해온 스택이라 온보딩 비용 없이 바로 적용 가능해 선택했어요. 진행 중인 프로젝트에서 새로운 라우터 학습 비용을 최소화하는 것이 우선이었습니다.",
       },
     ],
-    screenshots: [],
+    screenshots: [
+      {
+        src: "/images/projects/barogagi/01.jpg",
+        alt: "바로가기 기본 화면",
+      },
+      {
+        src: "/images/projects/barogagi/02.jpg",
+        alt: "바로가기 메인 화면",
+      },
+      {
+        src: "/images/projects/barogagi/03.jpg",
+        alt: "바로가기 일정 생성 로직 날짜 선택 화면",
+      },
+      {
+        src: "/images/projects/barogagi/04.jpg",
+        alt: "바로가기 일정 생성 로직 지역 선택 화면",
+      },
+      {
+        src: "/images/projects/barogagi/05.jpg",
+        alt: "바로가기 일정 생성 로직 계획 추가 화면",
+      },
+      {
+        src: "/images/projects/barogagi/06.jpg",
+        alt: "바로가기 일정 생성 로직 일정 완성 화면",
+      },
+      {
+        src: "/images/projects/barogagi/07.jpg",
+        alt: "바로가기 일정 생성 로직 일정 완성 토글 화면",
+      },
+      {
+        src: "/images/projects/barogagi/08.jpg",
+        alt: "바로가기 메인 활성화 화면",
+      },
+    ],
     works: [
       {
         num: "1",
