@@ -27,11 +27,11 @@ export const PROFILE_ROWS = [
 export const ABOUT_ITEMS = [
   {
     title: "설계부터 구현까지, 전 과정을 주도합니다.",
-    desc: "디자인과 개발을 함께 다루며 UX/UI를 직접 설계하고 구현까지 이어갑니다.\n구현 과정에서 설계 의도와 어긋나는 부분을 즉시 발견하고 수정할 수 있어, \n기획과 결과물 사이의 간격을 좁히는 방식으로 일합니다.",
+    desc: "UX/UI 설계와 프론트엔드 구현을 함께 담당해왔습니다.\n기획과 구현 사이에 다른 사람이 개입하지 않기 때문에, 설계 의도가 코드로 옮겨지는 과정에서 발생하는 해석 오차를 제거할 수 있습니다.",
   },
   {
-    title: "사용자의 흐름을 미리 검토합니다.",
-    desc: "기능이 동작하는 것과 사용자가 막히지 않는 것은 다른 문제라고 생각합니다.\n설계 단계부터 사용자가 마주할 수 있는 흐름 전체를 함께 정의하고, 예외 상황마다 서비스가 사용자를 안내할 수 있도록 대응합니다.",
+    title: "기능 완성과 UX 완성을 같은 기준으로 봅니다.",
+    desc: "기능이 동작하는 것과 사용자가 막히지 않는 것, 저는 이 둘을 같은 무게의 완성 기준으로 설계합니다.\n설계 단계부터 사용자가 마주할 수 있는 흐름 전체를 정의하고, 예외 상황마다 서비스가 사용자를 안내할 수 있도록 구현합니다.",
   },
   {
     title: "팀이 더 잘 돌아가도록 기여합니다.",
@@ -45,22 +45,19 @@ export const SKILL_GROUPS = [
     skills: ["React", "Next.js", "Expo", "TypeScript", "JavaScript"],
   },
   {
-    label: "상태 관리",
-    skills: ["Zustand", "Context API", "TanStack Query"],
-  },
-  {
-    label: "UI / STYLING",
+    label: "UI / DESIGN",
     skills: ["Tailwind CSS", "Framer Motion", "Storybook", "Figma"],
   },
   {
-    label: "INFRA & TOOLS",
-    skills: [
-      "Supabase",
-      "Vercel",
-      "GitHub",
-      "Notion",
-      "Vite",
-      "TanStack Router",
-    ],
+    label: "STATE / ROUTING",
+    skills: ["Zustand", "TanStack Router", "TanStack Query", "Context API"],
+  },
+  {
+    label: "BACKEND / INFRA",
+    skills: ["Supabase", "Vercel"],
+  },
+  {
+    label: "ETC",
+    skills: ["Notion", "GitHub"],
   },
 ] as const;
