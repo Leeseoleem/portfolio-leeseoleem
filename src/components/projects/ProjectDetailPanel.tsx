@@ -109,7 +109,7 @@ export default function ProjectDetailPanel({
             animate="visible"
             exit="exit"
             transition={TRANSITION}
-            className="fixed top-0 right-0 bottom-0 z-201 w-[min(540px,100%)] flex flex-col bg-bg-card border-l border-border"
+            className="fixed top-0 right-0 bottom-0 z-201 w-[min(60vw,100%)] flex flex-col bg-bg-card border-l border-border"
           >
             {/* ── 상단 바 ── */}
             <BackHeader
