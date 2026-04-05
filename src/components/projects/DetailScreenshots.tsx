@@ -1,33 +1,3 @@
-// ─────────────────────────────────────────────
-//  DetailScreenshots
-//  상세 패널 내 스크린샷 가로 스크롤 스트립
-//
-//  이미지 비율 처리:
-//    컨테이너: 9:16 고정
-//    이미지:   object-contain → 전체 보임, 남은 영역은 프로젝트 컬러 배경
-//
-//  로딩 처리:
-//    opacity-0 → onLoad → opacity-100 (fade-in)
-//    로드 실패 → onError → 플레이스홀더 대체
-//    src 빈 문자열 방어 처리 포함
-//
-//  📸 사진 넣는 방법 (data/projects.ts의 screenshots 배열에 추가)
-//
-//  1) public 폴더 정적 경로 (추천)
-//     /public/images/projects/birthday-card/01.webp
-//     → { src: '/images/projects/birthday-card/01.webp', alt: '메인 화면' }
-//
-//  2) src/assets import
-//     import img from '@/assets/projects/birthday-card/01.webp'
-//     → { src: img, alt: '메인 화면' }
-//
-//  3) 외부 URL
-//     → { src: 'https://...', alt: '메인 화면' }
-//
-//  권장 스펙: 9:16 비율, 450×800px 이상, .webp
-//  9:16이 아닌 이미지도 object-contain으로 전체 표시 (여백은 배경색 처리)
-// ─────────────────────────────────────────────
-
 import { useState } from "react";
 import SectionContainer from "./SectionContainer";
 import type { ProjectScreenshot } from "@/types/projects";
