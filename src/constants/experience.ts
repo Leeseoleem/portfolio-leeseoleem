@@ -7,7 +7,7 @@ export const ITEMS: ExperienceItemData[] = [
     org: "팀 푸른핫가마",
     period: "2025.05 — 현재",
     role: "Frontend Developer · UX/UI Designer",
-    desc: "팀 사이드 프로젝트 그룹.\nglassbottle · 바로가기 등 서비스 기획·개발 진행 중.",
+    desc: "사이드 프로젝트 그룹.\nglassbottle · 바로가기 등 서비스 기획·개발 진행 중.",
     tags: ["TeamProject", "SideProject"],
   },
   {
@@ -16,7 +16,7 @@ export const ITEMS: ExperienceItemData[] = [
     org: "Velog 기술 블로그",
     period: "2024.06 — 현재",
     role: "개인 운영",
-    desc: "프로젝트 트러블슈팅 경험과 기술 학습 내용을 꾸준히 기록·공유. 단일 게시물 최대 500+ 조회수 달성, 클래스101로부터 강의 제안 수령.",
+    desc: "프로젝트 트러블슈팅 및 기술 학습 내용 기록.\n콘텐츠 품질을 인정받아 클래스 101로부터 강의 제작 제안을 받음.",
     tags: ["TechnicalWriting"],
   },
   {

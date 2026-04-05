@@ -27,6 +27,102 @@ export const PROJECT_COLORS: Record<
 
 export const PROJECTS: Project[] = [
   {
+    id: "garachato",
+    title: "가라챠토",
+    summary:
+      "TJ 노래방 내 J-POP 인기 차트를 한국어 번역 및 YouTube 링크로 제공하는 서비스. 크롤러 설계부터 DB 구조, AI 챗봇까지 전담 구현.",
+    type: "personal",
+    period: "2026.02 — 진행 중",
+    role: "Fullstack Developer",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Zustand",
+      "Framer Motion",
+      "Supabase",
+      "Gemini API",
+      "YouTube Data API v3",
+      "Storybook",
+      "Vercel",
+    ],
+    color: "amber",
+    tags: ["개인 프로젝트", "Fullstack", "크롤링", "AI", "진행 중"],
+    skills: [
+      {
+        name: "Next.js",
+        reason:
+          "Route Handler로 외부 API 연동을 서버에서 처리해 별도 백엔드 없이 풀스택 구성이 가능했어요. TJ 크롤러와 YouTube API 호출을 모두 서버 사이드에서 관리할 수 있었습니다.",
+      },
+      {
+        name: "Supabase",
+        reason:
+          "한국어 부분 일치 검색(pg_trgm)과 RLS 접근 제어를 동시에 지원해 선택했어요. 별도 백엔드 없이 검색·권한 제어를 모두 처리할 수 있었습니다.",
+      },
+      {
+        name: "Gemini API",
+        reason:
+          "JSON 응답 모드(responseMimeType)로 구조화된 결과를 바로 수신할 수 있어 선택했어요. OpenAI 대비 무료 쿼터 내에서 운영 가능해 비용 부담 없이 AI 기능을 붙일 수 있었습니다.",
+      },
+    ],
+    screenshots: [
+      {
+        src: "/images/projects/garachato/01.jpg",
+        alt: "가라챠토 메인 화면",
+      },
+      {
+        src: "/images/projects/garachato/02.jpg",
+        alt: "가라챠토 곡 상세 정보 화면",
+      },
+      {
+        src: "/images/projects/garachato/03.jpg",
+        alt: "가라챠토 검색 결과 화면",
+      },
+      {
+        src: "/images/projects/garachato/04.jpg",
+        alt: "가라챠토 챗봇 화면",
+      },
+    ],
+    works: [
+      {
+        num: "1",
+        summary: "TJ 크롤러 구현",
+        detail:
+          "TJ API는 CSRF_TOKEN · JSESSIONID를 먼저 발급받아야 호출이 허용되는 구조였습니다. 브라우저 Network 탭으로 요청 흐름을 분석해 이 구조를 파악했고, 해당 토큰을 추출해 요청에 포함하는 방식으로 TOP 100 데이터를 안정적으로 수집했습니다.",
+      },
+      {
+        num: "2",
+        summary: "DB 설계 — 3계층 분리로 중복 번역 방지",
+        detail:
+          "단일 테이블 구조에서는 KY 차트 추가 시 동일 곡의 AI 번역이 중복 실행되는 문제가 있었습니다. songs → karaoke_tracks → rank_history 3계층으로 분리해 번역을 곡당 1회로 제한하여 처리 비용 중복을 방지했습니다. Supabase(PostgREST)가 서브쿼리를 지원하지 않아 조건 검색과 트랙 조회를 2단계로 분리하는 구조로 대응했습니다.",
+      },
+      {
+        num: "3",
+        summary: "YouTube API 쿼터 설계",
+        detail:
+          "파이프라인 테스트 중 40여 곡 처리 시점에 일일 쿼터 초과로 수집이 중단됐습니다. 처리 한도를 40곡으로 제한하고, 초과 시 처리되지 못한 데이터를 pending 상태로 유지해 익일 자동 재시도하는 구조로 API 비용 0원을 유지했습니다. 수집 지연 구간에서도 TJ 이미지를 먼저 표시하고 YouTube 연동 완료 시 자동 교체하는 방식으로 빈 상태 없이 점진적으로 품질이 개선되도록 했습니다.",
+      },
+      {
+        num: "4",
+        summary: "AI 챗봇 설계",
+        detail:
+          "사용자 입력 유형(곡 검색 · 아티스트 검색 · 추천 · 무관 질문)을 시스템 프롬프트에서 먼저 분류해, 처리 빈도가 높은 유형은 Gemini 호출 없이 즉시 응답하도록 했습니다. 실제 검색이 필요한 요청에만 쿼터를 소비하는 구조입니다.",
+      },
+      {
+        num: "5",
+        summary: "KY 크롤러 보류 결정",
+        detail:
+          "KY(금영) 차트 수집을 위해 크롤러 개발을 시도했습니다. TJ에서 헤더 조작으로 인증을 우회했던 방식을 동일하게 적용했으나, PowerShell에서는 정상 응답이 오는 반면 Node.js에서는 계속 차단됐습니다. Node.js의 요청 방식이 브라우저와 달라 서버가 봇으로 판단하고 있었고, 헤더 조작만으로는 이 차이를 극복할 수 없었습니다. 브라우저를 직접 실행하는 방식이 기술적 해결책이나 Vercel 배포 환경에서는 불가능하여 TJ 단독 운영을 유지하기로 결정했습니다.",
+      },
+    ],
+    links: {
+      github: "https://github.com/Leeseoleem/garachato-karaoke-chart",
+      live: "https://garachato-karaoke-chart.vercel.app/",
+    },
+    inProgress: true,
+  },
+
+  {
     id: "birthday-card",
     title: "인터랙티브 생일 카드",
     summary:
@@ -42,6 +138,7 @@ export const PROJECTS: Project[] = [
       "Framer Motion",
       "TanStack Router",
       "Supabase",
+      "Storybook",
       "Vercel",
     ],
     color: "blue",
@@ -55,7 +152,7 @@ export const PROJECTS: Project[] = [
       {
         name: "TanStack Router",
         reason:
-          "파일 기반 라우팅과 타입 안전한 라우트 관리를 위해 선택했어요. TypeScript와의 긴밀한 통합으로 라우트 파라미터까지 타입 추론이 가능해 개발 안정성이 높아졌습니다.",
+          "제작자(/creator)·수신자(/r) 영역을 파일 기반으로 명확히 분리하기 위해 선택했어요. beforeLoad 가드로 잘못된 접근을 차단하고, 배포·로컬 환경별 접근 페이지를 라우트 단에서 제어할 수 있었습니다.",
       },
       {
         name: "Framer Motion",
@@ -63,8 +160,56 @@ export const PROJECTS: Project[] = [
           "인터랙티브한 카드 연출에 필요한 애니메이션 제어를 선언형으로 구현할 수 있어 선택했어요. CSS 애니메이션 대비 복잡한 시퀀스 제어가 훨씬 직관적이었습니다.",
       },
     ],
-
-    screenshots: [],
+    screenshots: [
+      {
+        src: "/images/projects/birthday-card/01.jpg",
+        alt: "생일 카드 메인 화면",
+      },
+      {
+        src: "/images/projects/birthday-card/02.jpg",
+        alt: "생일 카드 프로필 입력 화면",
+      },
+      {
+        src: "/images/projects/birthday-card/03.jpg",
+        alt: "생일 카드 초대장 화면",
+      },
+      {
+        src: "/images/projects/birthday-card/04.jpg",
+        alt: "생일 카드 링크 공유 화면",
+      },
+      {
+        src: "/images/projects/birthday-card/05.jpg",
+        alt: "생일 카드 경로 오류 화면",
+      },
+      {
+        src: "/images/projects/birthday-card/06.jpg",
+        alt: "생일 카드 수신자 인증 화면",
+      },
+      {
+        src: "/images/projects/birthday-card/07.jpg",
+        alt: "생일 카드 수신자 인증 실패 화면",
+      },
+      {
+        src: "/images/projects/birthday-card/08.jpg",
+        alt: "생일 카드 수신자 초대장 화면",
+      },
+      {
+        src: "/images/projects/birthday-card/09.jpg",
+        alt: "생일 카드 케이크 불기 화면",
+      },
+      {
+        src: "/images/projects/birthday-card/10.jpg",
+        alt: "생일 카드 편지 봉투 열기 화면",
+      },
+      {
+        src: "/images/projects/birthday-card/11.jpg",
+        alt: "생일 카드 편지지 꺼내기 화면",
+      },
+      {
+        src: "/images/projects/birthday-card/12.jpg",
+        alt: "생일 카드 완료 화면",
+      },
+    ],
     works: [
       {
         num: "1",
@@ -74,18 +219,17 @@ export const PROJECTS: Project[] = [
       },
       {
         num: "2",
-        summary: "좌표 기반 레이아웃 뷰포트 대응 문제 해결",
+        summary: "좌표 기반 레이아웃 뷰포트 설계",
         detail:
-          "테스트 중 화면 크기 변경 시 좌표 기반 컴포넌트 배치가 틀어지는 문제를 발견했습니다. 미디어 쿼리 조건을 조합한 @custom-variant 커스텀 반응형 구조를 도입해 화면 크기 변화에 관계없이 컴포넌트 배치 일관성을 확보했습니다.",
+          "테스트 중 좌표 기반 컴포넌트 배치 페이지에서 화면 크기 변경 시 배치가 틀어지는 문제를 발견했습니다. 표준 미디어 쿼리를 적용했으나 가로 조건만으로는 대응이 불완전했고, 세로 크기 변화도 레이아웃에 영향을 준다는 것을 확인했습니다. 가로·세로 조건을 함께 조합한 @custom-variant 커스텀 반응형 구조를 도입해 뷰포트 변화에 관계없이 컴포넌트 배치 일관성을 확보했습니다.",
       },
       {
         num: "3",
         summary: "OG 태그 분리 설계 및 카카오톡 공유 연동",
         detail:
-          "공개 서비스 페이지와 수신자 전용 초대 링크는 공유 시 전달해야 하는 맥락이 다릅니다. 페이지 유형별 OG 태그를 분리 설계해 링크 성격에 맞는 미리보기가 노출되도록 했고, 카카오톡 공유와 URL 직접 전달 두 가지 경로를 모두 지원했습니다.",
+          "공개 서비스 페이지와 수신자 전용 초대 링크는 공유 시 전달해야 하는 맥락이 다릅니다. 페이지 유형별 OG 태그를 분리 설계해 링크 성격에 맞는 미리보기가 노출되도록 했고, 카카오톡 공유와 URL 직접 전달 두 가지 경로로 초대 링크를 전달할 수 있도록 구현했습니다.",
       },
     ],
-    // 아직 이미지 없으면 빈 배열 유지 → 플레이스홀더 표시
     links: {
       notion:
         "https://www.notion.so/My-Little-birthday-Party-2cc51f6a37ed80a6b99ffaed5681e063?source=copy_link",
@@ -98,7 +242,7 @@ export const PROJECTS: Project[] = [
     id: "barogagi",
     title: "바로가기",
     summary:
-      "키워드 선택만으로 AI가 일정을 자동 구성하는 스마트 일정 플래너. 동시성 처리, 입력값 유지 UX 등 사용자 경험 중심 구현.",
+      "키워드 선택만으로 AI가 일정을 자동 구성하는 스마트 일정 플래너. 동시성 처리, 입력값 유지 UX, WebView 앱 래핑 구현.",
     type: "team",
     period: "2025.05 — 진행 중",
     role: "Frontend Developer & UX/UI Designer",
@@ -108,7 +252,8 @@ export const PROJECTS: Project[] = [
       "Vite",
       "Tailwind CSS",
       "Zustand",
-      "TanStack Router",
+      "TanStack Query",
+      "React Router DOM",
       "Storybook",
     ],
     color: "green",
@@ -120,17 +265,50 @@ export const PROJECTS: Project[] = [
           "전역 상태가 일정 생성 데이터로 한정적이어서 Redux 대비 설정 비용이 낮아 선택했어요. persist 미들웨어를 활용해 sessionStorage 기반 상태 유지 구조도 간단하게 구현할 수 있었습니다.",
       },
       {
-        name: "TanStack Router",
+        name: "TanStack Query",
         reason:
-          "파일 기반 라우팅과 타입 안전한 라우트 관리를 위해 선택했어요. 멀티 스텝 플로우에서 각 단계별 라우트를 타입 안전하게 관리할 수 있어 적합했습니다.",
+          "서버 상태를 staleTime 기반으로 캐싱·재사용해 불필요한 재요청을 방지했어요. useEffect + fetch 대비 로딩·에러 상태를 선언적으로 관리할 수 있어 코드가 훨씬 간결해졌습니다.",
       },
       {
-        name: "Storybook",
+        name: "React Router DOM",
         reason:
-          "팀원 간 컴포넌트 단위 협업을 위해 도입했어요. UI 컴포넌트를 독립적으로 개발·문서화해 디자인과 구현 사이의 간격을 줄였습니다.",
+          "팀원 전원이 기존에 사용해온 스택이라 온보딩 비용 없이 바로 적용 가능해 선택했어요. 진행 중인 프로젝트에서 새로운 라우터 학습 비용을 최소화하는 것이 우선이었습니다.",
       },
     ],
-    screenshots: [],
+    screenshots: [
+      {
+        src: "/images/projects/barogagi/01.jpg",
+        alt: "바로가기 기본 화면",
+      },
+      {
+        src: "/images/projects/barogagi/02.jpg",
+        alt: "바로가기 메인 화면",
+      },
+      {
+        src: "/images/projects/barogagi/03.jpg",
+        alt: "바로가기 일정 생성 로직 날짜 선택 화면",
+      },
+      {
+        src: "/images/projects/barogagi/04.jpg",
+        alt: "바로가기 일정 생성 로직 지역 선택 화면",
+      },
+      {
+        src: "/images/projects/barogagi/05.jpg",
+        alt: "바로가기 일정 생성 로직 계획 추가 화면",
+      },
+      {
+        src: "/images/projects/barogagi/06.jpg",
+        alt: "바로가기 일정 생성 로직 일정 완성 화면",
+      },
+      {
+        src: "/images/projects/barogagi/07.jpg",
+        alt: "바로가기 일정 생성 로직 일정 완성 토글 화면",
+      },
+      {
+        src: "/images/projects/barogagi/08.jpg",
+        alt: "바로가기 메인 활성화 화면",
+      },
+    ],
     works: [
       {
         num: "1",
@@ -146,15 +324,15 @@ export const PROJECTS: Project[] = [
       },
       {
         num: "3",
-        summary: "회원가입 오류 UX 개선",
+        summary: "React Native WebView 기반 네이티브 앱 래핑",
         detail:
-          "최종 단계에서 가입 실패로만 표시되던 오류를 항목별로 세분화했습니다. 오류 발생 항목의 입력 단계로 즉시 이동해 사용자가 해당 위치에서 바로 수정 가능하도록 구현했습니다.",
+          "화면 이동·상태 저장 등 복잡한 처리가 많은 서비스 특성상 Expo보다 웹 환경이 더 적합하다고 판단했습니다. 이전 프로젝트에서 Expo의 잦은 오류와 UI 표현 한계를 경험한 것도 근거가 됐습니다. 기존 웹 코드를 그대로 유지한 채 React Native WebView로 래핑 구조를 설계하고, window.sendToNative 브릿지를 추가해 공유·외부 링크 등 네이티브 기능을 웹에서 호출할 수 있도록 연동했습니다.",
       },
       {
         num: "4",
-        summary: "Yup 스키마 기반 유효성 검증 구조 설계",
+        summary: "회원가입 UX 개선 및 유효성 검증 구조 설계",
         detail:
-          "인증 화면마다 유효성 로직이 중복 작성되는 구조를 개선했습니다. Yup 스키마로 유효성 로직을 분리해 인증 화면 전반에서 재사용 가능한 구조를 설계했습니다.",
+          "최종 단계에서 가입 실패로만 표시되던 오류를 항목별로 세분화하고, 오류 발생 항목의 입력 단계로 즉시 이동해 사용자가 해당 위치에서 바로 수정 가능하도록 구현했습니다. 인증 화면마다 유효성 로직이 중복 작성되는 구조도 Yup 스키마로 분리해 인증 화면 전반에서 재사용 가능한 구조로 개선했습니다.",
       },
     ],
     links: {
@@ -197,34 +375,76 @@ export const PROJECTS: Project[] = [
           "5개 탭과 중첩 스택 구조에 적합하고, Expo와의 공식 호환성이 보장되어 선택했어요. listeners API로 탭 이벤트를 직접 감지해 중첩 네비게이션 문제도 해결했습니다.",
       },
     ],
-    screenshots: [],
+    screenshots: [
+      {
+        src: "/images/projects/chaesung-eodi/01.jpg",
+        alt: "채식어디 메인 화면",
+      },
+      {
+        src: "/images/projects/chaesung-eodi/02.jpg",
+        alt: "채식어디 사전 탭 화면",
+      },
+      {
+        src: "/images/projects/chaesung-eodi/03.jpg",
+        alt: "채식어디 사전 상세 화면",
+      },
+      {
+        src: "/images/projects/chaesung-eodi/04.jpg",
+        alt: "채식어디 판독 탭 화면",
+      },
+      {
+        src: "/images/projects/chaesung-eodi/05.jpg",
+        alt: "채식어디 판독 확인 화면",
+      },
+      {
+        src: "/images/projects/chaesung-eodi/06.jpg",
+        alt: "채식어디 판독 결과 화면",
+      },
+      {
+        src: "/images/projects/chaesung-eodi/07.jpg",
+        alt: "채식어디 추천 탭 화면",
+      },
+      {
+        src: "/images/projects/chaesung-eodi/08.jpg",
+        alt: "채식어디 추천 선택 화면",
+      },
+      {
+        src: "/images/projects/chaesung-eodi/09.jpg",
+        alt: "채식어디 추천 결과 화면",
+      },
+      {
+        src: "/images/projects/chaesung-eodi/10.jpg",
+        alt: "채식어디 내 정보 탭 화면",
+      },
+    ],
     works: [
       {
         num: "1",
         summary: "카메라 접근 권한 상태별 분기 처리",
         detail:
-          "Expo 실기기 테스트 중 권한 거부 후 앱이 강제 종료되는 문제를 발견했습니다. useCameraPermissions의 canAskAgain 값을 기준으로 두 단계로 분기해, 강제 종료 없이 권한 재설정 후 서비스를 재개할 수 있는 UX를 구현했고 갤러리 접근 권한에도 동일하게 적용해 일관된 권한 UX 구조를 확립했습니다.",
+          "Expo 실기기 테스트 중 권한 거부 후 앱이 강제 종료되는 문제를 발견했습니다. useCameraPermissions의 canAskAgain 값을 기준으로 두 단계로 분기해, 강제 종료 없이 권한 재설정 후 서비스를 재개할 수 있는 UX를 구현했습니다. 갤러리 접근 권한에도 동일하게 적용해 일관된 권한 UX 구조를 확립했습니다.",
       },
       {
         num: "2",
         summary: "중첩 네비게이션 하단탭 이벤트 처리",
         detail:
-          "다른 탭으로 이동 후 기존 탭으로 돌아올 때 화면이 초기화되지 않는 문제를 발견했습니다. useFocusEffect를 시도했으나 포커스 상태 변화가 없는 탭 재클릭 시 트리거되지 않음을 확인하고, listeners의 tabPress로 클릭 시점에 원하는 로직을 실행했습니다.",
+          "다른 탭으로 이동 후 기존 탭으로 돌아올 때 화면이 초기화되지 않는 문제를 발견했습니다. useFocusEffect를 시도했으나 포커스 상태 변화가 없는 탭 재클릭 시 트리거되지 않음을 확인했습니다. React Navigation 공식 문서에서 tabPress가 클릭 시점을 감지하는 이벤트 키임을 확인하고, listeners의 tabPress로 클릭 시점에 원하는 로직을 실행했습니다.",
       },
       {
         num: "3",
         summary: "협업 구조 설계 — Notion 기반 문서화",
         detail:
-          "팀원마다 구현 방식이 달라 작업 합산 시 기준을 맞추는 데 시간이 소요됐습니다. 화면 구조·디자인 기준·기능 명세를 Notion에 문서화해 팀 전체 판단 기준을 단일화했고, 이후 팀원이 문서를 기준으로 스스로 판단 가능해져 불필요한 확인 비용이 감소했습니다.",
+          "팀원마다 구현 방식이 달라 작업 진행 시 기준을 맞추는 데 시간이 소요됐습니다. 화면 구조·디자인 기준·기능 명세를 Notion에 문서화해 팀 전체 판단 기준을 통일하여, 불필요한 확인 비용이 감소했습니다.",
       },
     ],
     links: {
       notion:
         "https://www.notion.so/7db36a8398684b36b0bcf3d89c2be948?source=copy_link",
       github: "https://github.com/VRRS-Project-Team-GitPage",
-      live: "#",
+      live: "https://youtu.be/PUEc9VYo3kM?si=mZLSoYFwAkyBrgSX",
     },
   },
+
   {
     id: "portfolio",
     title: "포트폴리오 웹사이트",
