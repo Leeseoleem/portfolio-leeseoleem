@@ -79,6 +79,62 @@ export default function ProjectDetailPanel({
     if (isOpen) bodyRef.current?.scrollTo({ top: 0 });
   }, [projectId, isOpen]);
 
+  // ── 드래그 리사이즈 ──
+  const panelRef = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
+  const dragStartX = useRef(0);
+  const dragStartWidth = useRef(0);
+
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== "undefined" && window.innerWidth <= 640,
+  );
+  useEffect(() => {
+    const handler = () => setIsMobile(window.innerWidth <= 640);
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
+  }, []);
+
+  // 언마운트 시 user-select 복구 보장
+  useEffect(() => {
+    return () => {
+      document.body.style.userSelect = "";
+    };
+  }, []);
+
+  const handleDragStart = (e: React.PointerEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    isDragging.current = true;
+    dragStartX.current = e.clientX;
+    dragStartWidth.current = panelRef.current?.offsetWidth ?? 0;
+    e.currentTarget.setPointerCapture(e.pointerId);
+    document.body.style.userSelect = "none";
+  };
+
+  const handleDragMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isDragging.current || !panelRef.current) return;
+    const delta = dragStartX.current - e.clientX;
+    const newWidth = Math.min(
+      Math.max(dragStartWidth.current + delta, 320),
+      window.innerWidth * 0.9,
+    );
+    panelRef.current.style.width = `${newWidth}px`;
+  };
+
+  const handleDragEnd = () => {
+    if (!isDragging.current || !panelRef.current) return;
+    isDragging.current = false;
+    document.body.style.userSelect = "";
+
+    const currentWidth = panelRef.current.offsetWidth;
+    const vw = window.innerWidth;
+
+    if (currentWidth < vw * 0.2) {
+      onClose();
+    } else if (currentWidth > vw * 0.8) {
+      panelRef.current.style.width = `${vw * 0.9}px`;
+    }
+  };
+
   const colors = project ? PROJECT_COLORS[project.color] : PROJECT_COLORS.blue;
 
   return (
@@ -100,6 +156,7 @@ export default function ProjectDetailPanel({
 
           {/* === 슬라이드 패널 === */}
           <motion.div
+            ref={panelRef}
             key="panel"
             role="dialog"
             aria-modal="true"
@@ -109,8 +166,24 @@ export default function ProjectDetailPanel({
             animate="visible"
             exit="exit"
             transition={TRANSITION}
-            className="fixed top-0 right-0 bottom-0 z-201 w-[min(60vw,100%)] flex flex-col bg-bg-card border-l border-border"
+            className="fixed top-0 right-0 bottom-0 z-201 w-full sm:w-[min(60vw,100%)] flex flex-col bg-bg-card border-l border-border"
           >
+            {/* ── 드래그 핸들 (데스크톱만) ── */}
+            {!isMobile && (
+              <div
+                className="absolute left-0 top-0 bottom-0 w-2 z-10 cursor-ew-resize group"
+                onPointerDown={handleDragStart}
+                onPointerMove={handleDragMove}
+                onPointerUp={handleDragEnd}
+                onPointerCancel={handleDragEnd}
+                aria-label="패널 너비 조정"
+                role="separator"
+                aria-orientation="vertical"
+              >
+                <div className="absolute inset-y-0 left-0 w-1 bg-transparent group-hover:bg-accent/30 group-active:bg-accent/50 transition-colors duration-150" />
+              </div>
+            )}
+
             {/* ── 상단 바 ── */}
             <BackHeader
               title={project.title}
